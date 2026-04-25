@@ -6,6 +6,9 @@ namespace MiniOrm\Domain;
 
 use MiniOrm\Core\QueryBuilder;
 use MiniOrm\Infrastructure\Database;
+use MiniOrm\Domain\Relations\BelongsTo;
+use MiniOrm\Domain\Relations\HasMany;
+use MiniOrm\Domain\Relations\HasOne;
 use ReflectionClass;
 use RuntimeException;
 
@@ -132,6 +135,28 @@ abstract class Model
     }
 
     // -------------------------------------------------------------------------
+    // Relationship methods
+    // -------------------------------------------------------------------------
+
+    protected function hasMany(string $related, ?string $foreignKey = null, string $localKey = 'id'): HasMany
+    {
+        $foreignKey ??= static::foreignKeyFor(static::class);
+        return new HasMany($this, $related, $foreignKey, $localKey);
+    }
+
+    protected function hasOne(string $related, ?string $foreignKey = null, string $localKey = 'id'): HasOne
+    {
+        $foreignKey ??= static::foreignKeyFor(static::class);
+        return new HasOne($this, $related, $foreignKey, $localKey);
+    }
+
+    protected function belongsTo(string $related, ?string $foreignKey = null, string $ownerKey = 'id'): BelongsTo
+    {
+        $foreignKey ??= static::foreignKeyFor($related);
+        return new BelongsTo($this, $related, $foreignKey, $ownerKey);
+    }
+
+    // -------------------------------------------------------------------------
     // Internals
     // -------------------------------------------------------------------------
 
@@ -156,6 +181,12 @@ abstract class Model
 
         $shortName = (new ReflectionClass(static::class))->getShortName();
         return strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $shortName)) . 's';
+    }
+
+    private static function foreignKeyFor(string $class): string
+    {
+        $shortName = (new ReflectionClass($class))->getShortName();
+        return strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $shortName)) . '_id';
     }
 
     private function guardExists(string $operation): void

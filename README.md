@@ -67,9 +67,9 @@ The project is organized into four layers. Each layer depends only on layers bel
 - [x] Implements `toArray()` and `toJson()`
 
 ### Phase 5 — Relationships
-- [ ] `belongsTo`, `hasOne`, `hasMany`
-- [ ] Relationship logic isolated from core query logic
-- [ ] No tight coupling between relationship types and Model internals
+- [x] `belongsTo`, `hasOne`, `hasMany`
+- [x] Relationship logic isolated from core query logic
+- [x] No tight coupling between relationship types and Model internals
 
 ### Phase 6 — Eager Loading
 - [ ] `with()` method to pre-load relationships
