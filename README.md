@@ -50,7 +50,7 @@ The project is organized into four layers. Each layer depends only on layers bel
 - Named connection registry (`Database`) for multi-database support
 - All PDO errors wrapped in `RuntimeException`
 
-### Phase 2 — Core Layer: QueryBuilder
+### Phase 2 — Core Layer: QueryBuilder ✅
 - Fluent builder interface
 - Methods: `select`, `table`, `where`, `orderBy`, `limit`, `get`, `first`, `count`, `exists`
 - Fully independent from Model — usable standalone
