@@ -44,58 +44,58 @@ The project is organized into four layers. Each layer depends only on layers bel
 
 ## Development Phases
 
-### Phase 1 — Infrastructure Layer ✅
-- PDO-based connection manager
-- Configurable via plain array (host, port, dbname, username, password, charset)
-- Named connection registry (`Database`) for multi-database support
-- All PDO errors wrapped in `RuntimeException`
+### Phase 1 — Infrastructure Layer
+- [x] PDO-based connection manager
+- [x] Configurable via plain array (host, port, dbname, username, password, charset)
+- [x] Named connection registry (`Database`) for multi-database support
+- [x] All PDO errors wrapped in `RuntimeException`
 
-### Phase 2 — Core Layer: QueryBuilder ✅
-- Fluent builder interface
-- Methods: `select`, `table`, `where`, `orderBy`, `limit`, `get`, `first`, `count`, `exists`
-- Fully independent from Model — usable standalone
-- Prepared statements with separated SQL and bindings
+### Phase 2 — Core Layer: QueryBuilder
+- [x] Fluent builder interface
+- [x] Methods: `select`, `table`, `where`, `orderBy`, `limit`, `get`, `first`, `count`, `exists`
+- [x] Fully independent from Model — usable standalone
+- [x] Prepared statements with separated SQL and bindings
 
-### Phase 3 — Domain Layer: Base Model ✅
-- Abstract `Model` class implementing Active Record pattern
-- Delegates all SQL construction to `QueryBuilder` (no raw SQL in Model)
-- Supports: `create`, `find`, `update`, `delete`, `where`
+### Phase 3 — Domain Layer: Base Model
+- [x] Abstract `Model` class implementing Active Record pattern
+- [x] Delegates all SQL construction to `QueryBuilder` (no raw SQL in Model)
+- [x] Supports: `create`, `find`, `update`, `delete`, `where`
 
 ### Phase 4 — Entity Hydration
-- Maps raw query results to model instances
-- Clean hydration strategy (no magic `__set` abuse)
-- Implements `toArray()` and `toJson()`
+- [ ] Maps raw query results to model instances
+- [ ] Clean hydration strategy (no magic `__set` abuse)
+- [ ] Implements `toArray()` and `toJson()`
 
 ### Phase 5 — Relationships
-- `belongsTo`, `hasOne`, `hasMany`
-- Relationship logic isolated from core query logic
-- No tight coupling between relationship types and Model internals
+- [ ] `belongsTo`, `hasOne`, `hasMany`
+- [ ] Relationship logic isolated from core query logic
+- [ ] No tight coupling between relationship types and Model internals
 
 ### Phase 6 — Eager Loading
-- `with()` method to pre-load relationships
-- Prevents N+1 query problem via batched IN queries
-- Relationship results mapped back to parent models efficiently
+- [ ] `with()` method to pre-load relationships
+- [ ] Prevents N+1 query problem via batched IN queries
+- [ ] Relationship results mapped back to parent models efficiently
 
 ### Phase 7 — Advanced Query Features
-- `count()`, `exists()`, `first()` finalized and consistent
-- Unified behavior across QueryBuilder and Model API
+- [ ] `count()`, `exists()`, `first()` finalized and consistent
+- [ ] Unified behavior across QueryBuilder and Model API
 
 ### Phase 8 — Error Handling
-- Custom exception hierarchy
-- Handles: missing table, invalid columns, query failures
-- All exceptions extend a base `OrmException`
+- [ ] Custom exception hierarchy
+- [ ] Handles: missing table, invalid columns, query failures
+- [ ] All exceptions extend a base `OrmException`
 
 ### Phase 9 — Testing
-- PHPUnit setup
-- Unit tests for QueryBuilder, Model, and Relationships
-- Uses an in-memory SQLite database for fast, isolated tests
+- [ ] PHPUnit setup
+- [ ] Unit tests for QueryBuilder, Model, and Relationships
+- [ ] Uses an in-memory SQLite database for fast, isolated tests
 
 ### Phase 10 — Example Usage
-- `example.php` demonstrating full ORM usage:
-  - CRUD operations
-  - Query chaining
-  - Relationships
-  - Eager loading
+- [ ] `example.php` demonstrating full ORM usage:
+  - [ ] CRUD operations
+  - [ ] Query chaining
+  - [ ] Relationships
+  - [ ] Eager loading
 
 ---
 
