@@ -13,6 +13,7 @@ abstract class Model
 {
     protected static string $table = '';
     protected static string $primaryKey = 'id';
+    protected static array $hidden = [];
 
     protected array $attributes = [];
     protected bool $exists = false;
@@ -35,6 +36,20 @@ abstract class Model
     public function __isset(string $key): bool
     {
         return isset($this->attributes[$key]);
+    }
+
+    public function toArray(): array
+    {
+        if (empty(static::$hidden)) {
+            return $this->attributes;
+        }
+
+        return array_diff_key($this->attributes, array_flip(static::$hidden));
+    }
+
+    public function toJson(): string
+    {
+        return json_encode($this->toArray(), JSON_THROW_ON_ERROR);
     }
 
     // -------------------------------------------------------------------------

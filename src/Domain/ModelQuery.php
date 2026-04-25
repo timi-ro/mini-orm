@@ -60,16 +60,13 @@ class ModelQuery
     /** @return list<Model> */
     public function get(): array
     {
-        return array_map(
-            fn($row) => ($this->modelClass)::fromRow($row),
-            $this->qb->get()
-        );
+        return Hydrator::hydrateAll($this->modelClass, $this->qb->get());
     }
 
     public function first(): ?Model
     {
         $row = $this->qb->first();
-        return $row !== null ? ($this->modelClass)::fromRow($row) : null;
+        return $row !== null ? Hydrator::hydrate($this->modelClass, $row) : null;
     }
 
     public function count(): int

@@ -62,9 +62,9 @@ The project is organized into four layers. Each layer depends only on layers bel
 - [x] Supports: `create`, `find`, `update`, `delete`, `where`
 
 ### Phase 4 — Entity Hydration
-- [ ] Maps raw query results to model instances
-- [ ] Clean hydration strategy (no magic `__set` abuse)
-- [ ] Implements `toArray()` and `toJson()`
+- [x] Maps raw query results to model instances
+- [x] Clean hydration strategy (no magic `__set` abuse)
+- [x] Implements `toArray()` and `toJson()`
 
 ### Phase 5 — Relationships
 - [ ] `belongsTo`, `hasOne`, `hasMany`
