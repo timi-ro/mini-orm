@@ -43,6 +43,7 @@ class Database
         return self::connection(self::$defaultName);
     }
 
+    /** For test environments only — resets all registered connections. */
     public static function reset(): void
     {
         self::$connections = [];

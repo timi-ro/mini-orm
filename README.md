@@ -56,7 +56,7 @@ The project is organized into four layers. Each layer depends only on layers bel
 - Fully independent from Model — usable standalone
 - Prepared statements with separated SQL and bindings
 
-### Phase 3 — Domain Layer: Base Model
+### Phase 3 — Domain Layer: Base Model ✅
 - Abstract `Model` class implementing Active Record pattern
 - Delegates all SQL construction to `QueryBuilder` (no raw SQL in Model)
 - Supports: `create`, `find`, `update`, `delete`, `where`
